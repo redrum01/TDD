@@ -11,9 +11,10 @@ export class StringCalculator {
       const delimiterEnd = numbers.indexOf('\n');
       const delimiterSection = numbers.substring(2, delimiterEnd);
       
-      if (delimiterSection.startsWith('[') && delimiterSection.endsWith(']')) {
-        const customDelimiter = delimiterSection.slice(1, -1);
-        delimiter = new RegExp(customDelimiter.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
+      if (delimiterSection.includes('[')) {
+        const delimiters = delimiterSection.match(/\[([^\]]+)\]/g)?.map(d => d.slice(1, -1)) || [];
+        const escapedDelimiters = delimiters.map(d => d.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+        delimiter = new RegExp(escapedDelimiters.join('|'), 'g');
       } else {
         delimiter = new RegExp(`[,\n${delimiterSection.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}]`);
       }
