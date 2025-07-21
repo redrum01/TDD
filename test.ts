@@ -34,3 +34,7 @@ test('should return the number itself for single number', () => {
 test('should return sum of two comma-separated numbers', () => {
   expect(calculator.add('1,5')).toBe(6);
 });
+
+test('should handle unknown amount of numbers', () => {
+  expect(calculator.add('1,2,3,4,5')).toBe(15);
+});
