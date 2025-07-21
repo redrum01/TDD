@@ -68,3 +68,7 @@ test('should show all negative numbers in exception', () => {
 test('should ignore numbers bigger than 1000', () => {
   expect(calculator.add('2,1001')).toBe(2);
 });
+
+test('should support multi-character delimiters', () => {
+  expect(calculator.add('//[***]\n1***2***3')).toBe(6);
+});
