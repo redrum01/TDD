@@ -30,3 +30,7 @@ test('should return 0 for empty string', () => {
 test('should return the number itself for single number', () => {
   expect(calculator.add('1')).toBe(1);
 });
+
+test('should return sum of two comma-separated numbers', () => {
+  expect(calculator.add('1,5')).toBe(6);
+});
