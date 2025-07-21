@@ -46,3 +46,12 @@ test('should handle newlines between numbers', () => {
 test('should support custom delimiters', () => {
   expect(calculator.add('//;\n1;2')).toBe(3);
 });
+
+test('should throw exception for negative numbers', () => {
+  try {
+    calculator.add('-1,2');
+    throw new Error('Expected exception was not thrown');
+  } catch (error) {
+    expect(error instanceof Error ? error.message : '').toBe('negatives not allowed -1');
+  }
+});
