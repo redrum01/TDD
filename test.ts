@@ -72,3 +72,7 @@ test('should ignore numbers bigger than 1000', () => {
 test('should support multi-character delimiters', () => {
   expect(calculator.add('//[***]\n1***2***3')).toBe(6);
 });
+
+test('should support multiple delimiters', () => {
+  expect(calculator.add('//[*][%]\n1*2%3')).toBe(6);
+});
