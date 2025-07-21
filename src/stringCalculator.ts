@@ -5,9 +5,6 @@ export class StringCalculator {
     }
     
     const nums = numbers.split(',');
-    if (nums.length > 2) {
-      throw new Error('Can only handle up to 2 numbers');
-    }
     return nums.reduce((sum, num) => sum + parseInt(num), 0);
   }
 }
