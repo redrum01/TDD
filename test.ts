@@ -64,3 +64,7 @@ test('should show all negative numbers in exception', () => {
     expect(error instanceof Error ? error.message : '').toBe('negatives not allowed -1,-3');
   }
 });
+
+test('should ignore numbers bigger than 1000', () => {
+  expect(calculator.add('2,1001')).toBe(2);
+});
