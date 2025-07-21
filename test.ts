@@ -55,3 +55,12 @@ test('should throw exception for negative numbers', () => {
     expect(error instanceof Error ? error.message : '').toBe('negatives not allowed -1');
   }
 });
+
+test('should show all negative numbers in exception', () => {
+  try {
+    calculator.add('-1,2,-3');
+    throw new Error('Expected exception was not thrown');
+  } catch (error) {
+    expect(error instanceof Error ? error.message : '').toBe('negatives not allowed -1,-3');
+  }
+});
