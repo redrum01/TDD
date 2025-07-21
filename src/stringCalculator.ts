@@ -9,8 +9,15 @@ export class StringCalculator {
     
     if (numbers.startsWith('//')) {
       const delimiterEnd = numbers.indexOf('\n');
-      const customDelimiter = numbers.substring(2, delimiterEnd);
-      delimiter = new RegExp(`[,\n${customDelimiter.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}]`);
+      const delimiterSection = numbers.substring(2, delimiterEnd);
+      
+      if (delimiterSection.startsWith('[') && delimiterSection.endsWith(']')) {
+        const customDelimiter = delimiterSection.slice(1, -1);
+        delimiter = new RegExp(customDelimiter.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
+      } else {
+        delimiter = new RegExp(`[,\n${delimiterSection.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}]`);
+      }
+      
       numbersToProcess = numbers.substring(delimiterEnd + 1);
     }
     
