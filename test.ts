@@ -76,3 +76,7 @@ test('should support multi-character delimiters', () => {
 test('should support multiple delimiters', () => {
   expect(calculator.add('//[*][%]\n1*2%3')).toBe(6);
 });
+
+test('should support multiple multi-character delimiters', () => {
+  expect(calculator.add('//[***][%%]\n1***2%%3')).toBe(6);
+});
