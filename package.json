@@ -5,5 +5,9 @@
   "scripts": {
     "test": "tsc && node dist/test.js",
     "build": "tsc"
+  },
+  "dependencies": {
+    "tsc": "^2.0.4",
+    "typescript": "^5.8.3"
   }
 }
